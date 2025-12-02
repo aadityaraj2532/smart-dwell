@@ -1,0 +1,21 @@
+runtime: nodejs20
+
+env_variables:
+  NODE_ENV: production
+
+handlers:
+  - url: /(.*\..*)
+    static_files: dist/\1
+    upload: dist/(.*\..*)
+    expiration: 1h
+
+  - url: /.*
+    static_files: dist/index.html
+    upload: dist/index.html
+    http_headers:
+      Cache-Control: no-cache
+
+automatic_scaling:
+  min_instances: 1
+  max_instances: 10
+  target_cpu_utilization: 0.6

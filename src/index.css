@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Background colors matching UrbanNest design */
+    --background: 0 0% 97%; /* #f6f7f8 */
+    --foreground: 0 0% 31%; /* Gray-800 text */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 11%;
+
+    /* Primary color: #1193d4 */
+    --primary: 199 84% 46%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 199 84% 56%;
+    --primary-dark: 199 84% 36%;
+
+    /* Secondary/accent colors */
+    --secondary: 158 64% 52%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 158 64% 62%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 0 0% 46%; /* Gray-600 */
+
+    --accent: 199 84% 46%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 88%; /* Gray-200/50 */
+    --input: 0 0% 82%; /* Gray-300 */
+    --ring: 199 84% 46%;
+
+    --radius: 0.25rem;
+
+    /* Gradient definitions */
+    --gradient-primary: linear-gradient(135deg, hsl(199 84% 46%) 0%, hsl(158 64% 52%) 100%);
+    --gradient-hero: linear-gradient(to right, hsl(199 84% 46% / 0.1) 0%, hsl(199 84% 46% / 0.2) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 100%);
+    --gradient-overlay: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
+    --gradient-to-transparent: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    
+    /* Shadows matching UrbanNest */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    /* Dark mode: #101c22 background */
+    --background: 200 38% 10%;
+    --foreground: 0 0% 88%;
+
+    --card: 0 0% 15%; /* Gray-800 */
+    --card-foreground: 0 0% 88%;
+
+    --popover: 0 0% 15%;
+    --popover-foreground: 0 0% 88%;
+
+    --primary: 199 84% 46%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 199 84% 56%;
+    --primary-dark: 199 84% 36%;
+
+    --secondary: 158 64% 52%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 158 64% 62%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 63%; /* Gray-400 */
+
+    --accent: 199 84% 46%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 28%; /* Gray-700/50 */
+    --input: 0 0% 26%; /* Gray-600 */
+    --ring: 199 84% 46%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(199 84% 46%) 0%, hsl(158 64% 52%) 100%);
+    --gradient-hero: linear-gradient(to right, hsl(199 84% 46% / 0.2) 0%, hsl(199 84% 46% / 0.3) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 15%) 0%, hsl(0 0% 18%) 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-lift {
+    @apply transition-smooth hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .hover-scale {
+    @apply transition-smooth hover:scale-105;
+  }
+
+  .property-card {
+    @apply bg-card rounded-xl overflow-hidden shadow-md hover-lift border border-border;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-glow;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90;
+  }
+}
